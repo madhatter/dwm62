@@ -18,11 +18,13 @@ epoch=1
 source=(dwm.desktop
         "$_pkgname::git+http://git.suckless.org/dwm")
 _patches=(dwm-alpha-20180613-b69c870.diff
-          dwm-pertag.diff)
+          dwm-pertag.diff
+          dwm-bottomstack.diff)
 md5sums=('939f403a71b6e85261d09fc3412269ee'
          'SKIP'
          '4e5893e04c443530168223639c97bc47'
-         '9f8c3a6ed9745856f05921837660df08')
+         '9f8c3a6ed9745856f05921837660df08'
+         '77a365003af3b6a500cf05c573c88b04')
 source=(${source[@]} ${_patches[@]})
 
 pkgver(){
