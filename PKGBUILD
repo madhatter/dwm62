@@ -16,11 +16,12 @@ provides=('dwm')
 conflicts=('dwm')
 epoch=1
 source=(dwm.desktop
-        "$_pkgname::git+http://git.suckless.org/dwm"
-        config.h)
+        "$_pkgname::git+http://git.suckless.org/dwm")
+_patches=(dwm-alpha-20180613-b69c870.diff)
 md5sums=('939f403a71b6e85261d09fc3412269ee'
          'SKIP'
-         'SKIP')
+         '4e5893e04c443530168223639c97bc47')
+source=(${source[@]} ${_patches[@]})
 
 pkgver(){
   cd $_pkgname
@@ -29,9 +30,12 @@ pkgver(){
 
 prepare() {
   cd $_pkgname
-  #if [[ -f "$SRCDEST/$pkgname/config.h" ]]; then
-  #  cp -f "$SRCDEST/$pkgname/config.h" config.h
-  #fi
+
+  for p in "${_patches[@]}"; do
+        echo "=> $p"
+    patch < ../$p || return 1
+  done
+
   if [[ -f "$SRCDEST/config.h" ]]; then
     cp -f "$SRCDEST/config.h" config.h
   fi
