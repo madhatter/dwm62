@@ -30,21 +30,21 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "\ue795", "\ue62b", "\uf6ee", "\uf738", "\uf27a", "\uf886", "\uf5e2", "\ue708" };
+static const char *tags[] = { "\ue795", "\ue62b", "\uf6ee", "\uf738", "\uf27a", "\uf886", "\ue22b", "\ue708" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
-	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,    True,        -1 },
-	{ "keepassx", NULL,		  NULL,			1 << 7,    True,        -1 },
-	{ "Spotify",  NULL,       NULL,         1 << 5,    True,        -1 }, // fixes rendering glitches
-	{ "Steam",    NULL,       NULL,         1 << 6,    True,        -1 }, // fixes rendering glitches
-	{ "jetbrains-idea",  NULL,   NULL,      1 << 1,    True,        -1 }, // fixes rendering glitches
-	{ "Rocket.Chat+",  NULL,  NULL,         1 << 4,    True,        -1 }, // fixes rendering glitches
+	/* class      instance    title       tags mask    iscentered   isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,         1 << 6,        0,           1,         -1 }, // appears on tag 7
+	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,        1,           1,         -1 },
+	{ "keepassx", NULL,       NULL,         1 << 7,        0,           1,         -1 },
+	{ "Spotify",  NULL,       NULL,         1 << 5,        0,           1,         -1 }, // fixes rendering glitches
+	{ "Steam",    NULL,       NULL,         1 << 6,        0,           1,         -1 }, // fixes rendering glitches
+	{ "jetbrains-idea",  NULL,   NULL,      1 << 1,        0,           1,         -1 }, // fixes rendering glitches
+	{ "Rocket.Chat+",  NULL,  NULL,         1 << 4,        0,           1,         -1 }, // fixes rendering glitches
 };
 
 /* layout(s) */
