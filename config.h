@@ -44,7 +44,6 @@ static const Rule rules[] = {
 	{ "Spotify",  NULL,       NULL,         1 << 5,        0,           1,         -1 }, // fixes rendering glitches
 	{ "Steam",    NULL,       NULL,         1 << 6,        0,           1,         -1 }, // fixes rendering glitches
 	{ "jetbrains-idea",  NULL,   NULL,      1 << 1,        0,           1,         -1 }, // fixes rendering glitches
-	{ "Rocket.Chat+",  NULL,  NULL,         1 << 4,        0,           1,         -1 }, // fixes rendering glitches
 };
 
 /* layout(s) */
@@ -75,10 +74,11 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "/home/awarnecke/bin/dmenu_bind.sh", NULL };
+//static const char *dmenucmd[] = { "/home/awarnecke/bin/dmenu_bind.sh", NULL };
+static const char *dmenucmd[] = { "rofi", "-show", "run", NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
-static const char *lockcmd[]	= { "light-locker-command", "-l", NULL };
+static const char *lockcmd[]	= { "dm-tool", "lock", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
 
 static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NULL };

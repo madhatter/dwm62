@@ -1,9 +1,9 @@
 # Maintainer: Arvid Warnecke <arvid.warnecke@gmail.com>
 
 pkgname=dwm-git
-_pkgname=dwm
+pkgname=dwm
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
