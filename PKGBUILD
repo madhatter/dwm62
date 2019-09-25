@@ -16,7 +16,7 @@ provides=('dwm')
 conflicts=('dwm')
 epoch=1
 source=(dwm.desktop
-        "$_pkgname::git+http://git.suckless.org/dwm")
+        http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz)
 _patches=(dwm-alpha-20180613-b69c870.diff
           dwm-pertag.diff
           dwm-bottomstack.diff
@@ -29,13 +29,13 @@ md5sums=('939f403a71b6e85261d09fc3412269ee'
          'f69050fc7ce0240237e6d831f83f405a')
 source=(${source[@]} ${_patches[@]})
 
-pkgver(){
-  cd $_pkgname
-  git describe --tags |sed 's/-/./g'
-}
-
+#pkgver(){
+#  cd $srcdir/$pkgname-$pkgver
+#  git describe --tags |sed 's/-/./g'
+#}
+#
 prepare() {
-  cd $_pkgname
+  cd $srcdir/$pkgname-$pkgver
 
   for p in "${_patches[@]}"; do
         echo "=> $p"
@@ -48,12 +48,12 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname
+  cd $srcdir/$pkgname-$pkgver
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd $_pkgname
+  cd $srcdir/$pkgname-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
