@@ -1,6 +1,5 @@
 # Maintainer: Arvid Warnecke <arvid.warnecke@gmail.com>
 
-pkgname=dwm-git
 pkgname=dwm
 pkgver=6.2
 pkgrel=3
@@ -14,7 +13,7 @@ makedepends=('git')
 install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
-epoch=1
+#epoch=1
 source=(dwm.desktop
         http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz)
 _patches=(dwm-alpha-20180613-b69c870.diff

@@ -82,19 +82,19 @@ static const char *lockcmd[]	= { "dm-tool", "lock", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
 
 static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NULL };
-static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
+static const char *voltoggle[]  = { "pactl", "set-sink-mute", "0", "toggle",  NULL };
 static const char *volup[]      = { "amixer", "-q", "set", "Master", "2%+",  NULL };
 
-static const char *brightup[]   = { "light", "-A", "5", NULL};
-static const char *brightdown[] = { "light", "-U", "5", NULL};
+static const char *brightup[]   = { "xbacklight", "-inc", "10", NULL};
+static const char *brightdown[] = { "xbacklight", "-dec", "10", NULL};
 
 static const char *next[]       = { "mpc", "next", NULL };
 static const char *play[]       = { "mpc", "toggle", NULL };
 static const char *prev[]       = { "mpc", "prev", NULL };
 
-static const char *snext[]		= { "spotify-cli", "--next", NULL };
-static const char *splay[]		= { "spotify-cli", "--playpause", NULL };
-static const char *sprev[]		= { "spotify-cli", "--prev", NULL };
+static const char *snext[]		= { "spotifycli", "--next", NULL };
+static const char *splay[]		= { "spotifycli", "--playpause", NULL };
+static const char *sprev[]		= { "spotifycli", "--prev", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
