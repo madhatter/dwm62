@@ -40,6 +40,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask    iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,         1 << 6,        0,           1,         -1 }, // appears on tag 7
 	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,        1,           1,         -1 },
+	{ "URxvt",    NULL,       "ncspot",     1 << 5,        1,           1,         -1 },
 	{ "keepassx", NULL,       NULL,         1 << 7,        0,           1,         -1 },
 	{ "Spotify",  NULL,       NULL,         1 << 5,        0,           1,         -1 }, // fixes rendering glitches
 	{ "Steam",    NULL,       NULL,         1 << 6,        0,           1,         -1 }, // fixes rendering glitches
@@ -78,15 +79,16 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "rofi", "-show", "run", NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
-static const char *lockcmd[]	= { "dm-tool", "lock", NULL };
+static const char *lockcmd[]	= { "slock", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
+static const char *ncspotcmd[] = { "urxvt", "-title", "ncspot", "-e", "/home/awarnecke/.cargo/bin/ncspot", NULL };
 
 static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NULL };
 static const char *voltoggle[]  = { "pactl", "set-sink-mute", "0", "toggle",  NULL };
 static const char *volup[]      = { "amixer", "-q", "set", "Master", "2%+",  NULL };
 
-static const char *brightup[]   = { "xbacklight", "-inc", "10", NULL};
-static const char *brightdown[] = { "xbacklight", "-dec", "10", NULL};
+static const char *brightup[]   = { "sudo", "light", "-A", "5", NULL};
+static const char *brightdown[] = { "sudo", "light", "-U", "5", NULL};
 
 static const char *next[]       = { "mpc", "next", NULL };
 static const char *play[]       = { "mpc", "toggle", NULL };
@@ -104,6 +106,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = ncmpcppcmd } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = ncspotcmd } },
 	{ MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = volup } },
 	{ 0,                            0x1008ff13,spawn,          {.v = volup } },
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          {.v = voldown } },
